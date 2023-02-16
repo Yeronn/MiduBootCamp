@@ -1,0 +1,36 @@
+import ReactDOM from "react-dom";
+import {useState} from 'react'
+
+const rootElement = document.getElementById("root");
+
+const App = (props) => {
+  const [contador,setContador] = useState(0)
+  /*
+  const contador = useState(13)
+  const contadorValue = contador[0]
+  const updateContador = contador[1]
+*/
+
+  console.log("render")
+
+  const handleClick = () => {
+    setContador(contador + 1)
+  }
+  const handleClickReset = () => {
+    setContador(0)
+  }
+
+  const isEven = contador % 2 === 0;
+const mensajePar = isEven ? "Es par" : "Es impar";
+  return(
+    <div>
+      <p>El Valor del contador es:</p>
+      <h1>{contador}</h1>
+      <p>{mensajePar}</p>
+      <button onClick={handleClick}>Incrementar</button>
+      <button onClick={handleClickReset}>Incrementar</button>
+    </div>
+  )
+}
+
+ReactDOM.render(<App />, rootElement);
